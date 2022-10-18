@@ -55,7 +55,13 @@ function App() {
     getPerson();
   }, []);
   //If the person is not null, then look for person.image then if that is not the case then just display default (person && person.image) || defaultImage
-  const handleValue = (e) => {};
+  const handleValue = (e) => {
+    if (e.target.classList.contains("icon")) {
+      const newValue = e.target.dataset.label;
+      setValue(person[newValue])
+      setTitle(newValue)
+    }
+  };
   return (
     <main>
       <div className="block bcg-black"></div>
@@ -108,7 +114,7 @@ function App() {
               <FaLock />
             </button>
           </div>
-          <button className="btn" type="button">
+          <button className="btn" type="button" onClick={getPerson}>
             {loading ? "loading..." : "random user"}
           </button>
         </div>
