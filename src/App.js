@@ -15,6 +15,30 @@ function App() {
   const [title, setTitle] = useState("name");
   const [value, setValue] = useState("random person");
 
+  const getPerson = async () => {
+    const response = await fetch(url);
+    const data = await response.json;
+    const person = data.results[0];
+    const { phone, email } = person;
+    //This is how you can destructure and rename properties in an object.
+    const { large: image } = person.picture;
+    //In this case the password property is nested in the login property. This is a way you can destructure it and use it in the app.
+    const {
+      login: { password },
+    } = person;
+    const { first, last } = person.name;
+    const {
+      dob: { age },
+    } = person;
+    const {
+      street: { number, name },
+    } = person.location;
+  };
+
+  useEffect(() => {
+    getPerson();
+  }, []);
+
   return <h2>random user starter</h2>;
 }
 
