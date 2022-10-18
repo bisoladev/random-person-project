@@ -47,6 +47,8 @@ function App() {
     };
     setPerson(newPerson);
     setLoading(false);
+    setTitle("name");
+    setValue(newPerson.name);
   };
 
   useEffect(() => {
