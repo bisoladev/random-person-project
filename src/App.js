@@ -16,8 +16,9 @@ function App() {
   const [value, setValue] = useState("random person");
 
   const getPerson = async () => {
+    setLoading(true);
     const response = await fetch(url);
-    const data = await response.json;
+    const data = await response.json();
     const person = data.results[0];
     const { phone, email } = person;
     //This is how you can destructure and rename properties in an object.
